@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 // Database Connection
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/shopverse';
 
 mongoose.connect(MONGO_URI)

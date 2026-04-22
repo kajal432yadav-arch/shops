@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -13,6 +13,10 @@ import Contact from './pages/Contact';
 import LoginSignup from './pages/LoginSignup';
 import Profile from './pages/Profile';
 import Wishlist from './pages/Wishlist';
+import TrackOrder from './pages/TrackOrder';
+import ShippingPolicy from './pages/ShippingPolicy';
+import ReturnsRefunds from './pages/ReturnsRefunds';
+import FAQs from './pages/FAQs';
 
 function App() {
   const location = useLocation();
@@ -37,6 +41,11 @@ function App() {
             <Route path="/login" element={<PageWrapper><LoginSignup /></PageWrapper>} />
             <Route path="/profile" element={<PageWrapper><Profile /></PageWrapper>} />
             <Route path="/wishlist" element={<PageWrapper><Wishlist /></PageWrapper>} />
+            <Route path="/track-order" element={<PageWrapper><TrackOrder /></PageWrapper>} />
+            <Route path="/shipping" element={<PageWrapper><ShippingPolicy /></PageWrapper>} />
+            <Route path="/returns" element={<PageWrapper><ReturnsRefunds /></PageWrapper>} />
+            <Route path="/faqs" element={<PageWrapper><FAQs /></PageWrapper>} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AnimatePresence>
       </main>

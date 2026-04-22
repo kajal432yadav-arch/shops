@@ -27,7 +27,7 @@ const LoginSignup = () => {
 
     try {
       // Connecting to our backend server
-      const res = await axios.post(`http://localhost:5000${endpoint}`, payload);
+      const res = await axios.post(`http://localhost:5001${endpoint}`, payload);
       
       localStorage.setItem('shopverse_token', res.data.token);
       localStorage.setItem('shopverse_user', JSON.stringify(res.data.user));

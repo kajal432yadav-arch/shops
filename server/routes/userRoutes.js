@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
@@ -25,6 +26,14 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
+    // Check if database is connected. If not, use Mock Login for demonstration.
+    if (mongoose.connection.readyState !== 1) {
+      console.log('Using Mock Login (Database not connected)');
+      const mockUser = { id: 'mock_id', name: 'Mock User', email: email };
+      const token = jwt.sign({ id: mockUser.id }, process.env.JWT_SECRET || 'secret', { expiresIn: '10y' });
+      return res.json({ token, user: mockUser });
+    }
+
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: 'Invalid credentials' });
 

@@ -19,7 +19,7 @@ const Checkout = () => {
     
     try {
       // Call the real backend to send the email
-      await axios.post('http://localhost:5000/api/orders/checkout', { 
+      await axios.post('http://localhost:5001/api/orders/checkout', { 
         email: email, 
         orderId: orderId 
       });
